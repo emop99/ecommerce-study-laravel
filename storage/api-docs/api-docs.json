@@ -11,8 +11,8 @@
                 "tags": [
                     "Member Auth"
                 ],
-                "summary": "회원 가입",
-                "description": "회원 가입 API",
+                "summary": "쇼핑몰 회원 가입",
+                "description": "쇼핑몰 회원 가입 API",
                 "operationId": "Register",
                 "requestBody": {
                     "content": {
@@ -22,7 +22,8 @@
                                     "name",
                                     "email",
                                     "password",
-                                    "password_confirmation"
+                                    "password_confirmation",
+                                    "phone"
                                 ],
                                 "properties": {
                                     "name": {
@@ -36,6 +37,9 @@
                                     },
                                     "password_confirmation": {
                                         "type": "password"
+                                    },
+                                    "phone": {
+                                        "type": "number"
                                     }
                                 },
                                 "type": "object"
@@ -48,7 +52,48 @@
                         "description": "Register Successfully",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "properties": {
+                                                "token": {
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "abilities": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "tokenable_id": {
+                                                            "type": "number"
+                                                        },
+                                                        "tokenable_type": {
+                                                            "type": "string"
+                                                        },
+                                                        "updated_at": {
+                                                            "type": "string"
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string"
+                                                        },
+                                                        "id": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
                             }
                         }
                     },
@@ -56,7 +101,17 @@
                         "description": "Unprocessable Entity",
                         "content": {
                             "application/json": {
-                                "schema": {}
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
                             }
                         }
                     },

@@ -9,6 +9,7 @@ class MemberTest extends TestCase
 {
     /**
      * 회원 가입 Test
+     *
      * @return void
      */
     public function test_member_register()
@@ -20,6 +21,7 @@ class MemberTest extends TestCase
             'email'                 => 'test@naver.com',
             'password'              => 'test12',
             'password_confirmation' => 'test12',
+            'phone'                 => '01000000000',
         ]);
 
         $response->assertStatus(200);
